@@ -5,12 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crowdfunding Campaign</title>
     <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes progressGrow {
+            from { width: 0; }
+            to { width: 1%; }
+        }
+
         body {
             font-family: 'Verdana', sans-serif;
             margin: 0;
             padding: 0;
             background: linear-gradient(to bottom, #14191f, #202a34);
             color: white;
+            animation: fadeIn 1s ease-out;
         }
 
         header {
@@ -35,6 +46,7 @@
             margin: 20px;
             border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 1.5s ease-out;
         }
 
         section h2 {
@@ -51,20 +63,22 @@
             border-radius: 8px;
             overflow: hidden;
             position: relative;
+            animation: fadeIn 2s ease-out;
         }
 
         .progress-bar span {
             display: block;
             height: 30px;
             background-color: #D4AF37;
-            width: 0;
-            transition: width 0.5s ease;
+            width: 1%;
+            animation: progressGrow 2s ease-out;
         }
 
         .stats {
             margin: 20px auto;
             font-size: 18px;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 1.2s ease-out;
         }
 
         button {
@@ -77,6 +91,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 1.3s ease-out;
         }
 
         button:hover {
@@ -91,6 +106,7 @@
             padding: 20px;
             border-top: 3px solid #D4AF37;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 1.5s ease-out;
         }
 
         footer p {
@@ -100,7 +116,7 @@
         }
     </style>
     <script>
-        let currentFunds = 0;
+        let currentFunds = 20;
         const goalFunds = 2000;
         const goalHours = 120;
 
@@ -115,12 +131,16 @@
             currentFunds += amount;
             updateProgress();
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            updateProgress();
+        });
     </script>
 </head>
 <body>
     <header>
         <h1>Crowdfunding Campaign</h1>
-        <p>Help Us Reach Our Monthly Goal!</p>
+        <p>Do you want a better Z-Tavern with Kiels working part-time on it after work?</p>
     </header>
 
     <section>
@@ -131,8 +151,8 @@
             <span id="fundsProgress"></span>
         </div>
         <div class="stats">
-            <p id="fundsText">€0 / €2000</p>
-            <p id="hoursText">0 / 120 hours</p>
+            <p id="fundsText">€20 / €2000</p>
+            <p id="hoursText">1.2 / 120 hours</p>
         </div>
         <button onclick="window.open('https://paypal.me/Ztavern1', '_blank')">Donate with PayPal</button>
     </section>
@@ -140,9 +160,5 @@
     <footer>
         <p>&copy; 2025 Crowdfunding Platform | All Rights Reserved</p>
     </footer>
-
-    <script>
-        updateProgress();
-    </script>
 </body>
 </html>
