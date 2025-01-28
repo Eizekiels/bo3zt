@@ -23,11 +23,6 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
-        @keyframes progressGrow {
-            from { width: 10%; }
-            to { width: 15%; }
-        }
-
         body {
             font-family: 'Verdana', sans-serif;
             margin: 0;
@@ -128,8 +123,6 @@
             display: block;
             height: 30px;
             background: linear-gradient(45deg, #D4AF37, #8B7500);
-            width: 10%;
-            animation: progressGrow 6s infinite alternate;
         }
 
         .rewards {
@@ -179,21 +172,21 @@
         }
     </style>
     <script>
-        let currentFunds = 25;
-        const goalFunds = 2000;
+        let currentFunds = 40;
+        const hourlyRate = 20; // €20 per hour
 
         function updateProgress() {
-            const fundsPercentage = (currentFunds / goalFunds) * 100;
-            document.getElementById('fundsProgress').style.width = fundsPercentage + '%';
-            document.getElementById('fundsText').textContent = `€${currentFunds} / €${goalFunds}`;
+            const hoursFunded = (currentFunds / hourlyRate).toFixed(2);
+            document.getElementById('fundsProgress').style.width = `${(currentFunds / hourlyRate) * 5}%`;
+            document.getElementById('fundsText').textContent = `€${currentFunds} contributed (~${hoursFunded} hours funded)`;
         }
 
         function donate(amount) {
-            if (amount > 0 && currentFunds + amount <= goalFunds) {
+            if (amount > 0) {
                 currentFunds += amount;
                 updateProgress();
             } else {
-                alert('Invalid donation amount or goal reached!');
+                alert('Invalid donation amount!');
             }
         }
 
@@ -233,7 +226,7 @@
             <span id="fundsProgress"></span>
         </div>
         <div class="stats">
-            <p id="fundsText">€25 / €2000</p>
+            <p id="fundsText">€40 contributed (~2 hours funded)</p>
         </div>
         <a href="https://paypal.me/ztavern1/5" target="_blank" class="cta-button">Donate €5</a>
         <a href="https://paypal.me/ztavern1/20" target="_blank" class="cta-button">Donate €20</a>
