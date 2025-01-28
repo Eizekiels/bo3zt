@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowdfunding Campaign</title>
+    <meta property="og:title" content="Crowdfunding Campaign for Z-Tavern 2.0" />
+    <meta property="og:description" content="Help bring a better Z-Tavern experience to Black Ops 3! Support Kiels' part-time development with your contributions." />
+    <meta property="og:image" content="https://yourwebsite.com/image-preview.png" />
+    <meta property="og:url" content="https://yourwebsite.com" />
+    <meta property="og:type" content="website" />
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(212, 175, 55, 1); }
+        }
+
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #14191f, #202a34);
+            color: white;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        header {
+            background-color: #2e3b44;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #D4AF37;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            animation: slideIn 2s ease-out;
+        }
+
+        header h1 {
+            color: #D4AF37;
+            margin: 0;
+            font-size: 42px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            animation: pulseGlow 4s infinite;
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #2e3b44;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 2s ease-out;
+        }
+
+        section h2 {
+            color: #D4AF37;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .progress-bar {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #10141b;
+            border: 2px solid #D4AF37;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar span {
+            display: block;
+            height: 30px;
+            background-color: #D4AF37;
+            width: 10%;
+            animation: progressGrow 4s infinite alternate;
+        }
+
+        @keyframes progressGrow {
+            from { width: 10%; }
+            to { width: 20%; }
+        }
+
+        .stats {
+            margin: 20px auto;
+            font-size: 18px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        button {
+            background-color: #10141b;
+            color: #D4AF37;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: 2px solid #D4AF37;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            animation: pulseGlow 4s infinite;
+        }
+
+        button:hover {
+            background-color: #D4AF37;
+            color: #1b1f23;
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: #202a34;
+            text-align: center;
+            padding: 20px;
+            border-top: 3px solid #D4AF37;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 2s ease-out;
+        }
+
+        footer p {
+            color: #D4AF37;
+            font-size: 14px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+    <script>
+        let currentFunds = 20;
+        const goalFunds = 2000;
+        const goalHours = 120;
+
+        function updateProgress() {
+            const fundsPercentage = (currentFunds / goalFunds) * 100;
+            document.getElementById('fundsProgress').style.width = fundsPercentage + '%';
+            document.getElementById('fundsText').textContent = `€${currentFunds} / €${goalFunds}`;
+            document.getElementById('hoursText').textContent = `${(currentFunds / goalFunds * goalHours).toFixed(1)} / ${goalHours} hours`;
+        }
+
+        function donate(amount) {
+            currentFunds += amount;
+            updateProgress();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            updateProgress();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Crowdfunding Campaign</h1>
+        <p>Do you want a better Z-Tavern with Kiels working part-time on it after work?</p>
+    </header>
+
+    <section>
+        <h2>Support the Development of Z-Tavern 2.0</h2>
+        <p>Your contribution will help bring an even better Z-Tavern experience to Black Ops 3, making it twice as exciting with improved gameplay, features, and community-focused updates. Together, we can create something incredible!</p>
+        <p>We commit to delivering 120 hours of dedicated work to develop the server, with a full 1-year guarantee of support and updates to ensure your gaming experience is top-notch.</p>
+        <div class="progress-bar">
+            <span id="fundsProgress"></span>
+        </div>
+        <div class="stats">
+            <p id="fundsText">€20 / €2000</p>
+            <p id="hoursText">1.2 / 120 hours</p>
+        </div>
+        <button onclick="window.open('https://paypal.me/Ztavern1', '_blank')">Donate with PayPal</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Crowdfunding Platform | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
