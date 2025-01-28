@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crowdfunding Campaign</title>
+    <meta name="description" content="Support the Z-Tavern 2.0 project for Black Ops 3. Help fund a full-year development to enhance gameplay and bring community-driven updates!">
+    <meta name="keywords" content="Z-Tavern, crowdfunding, Black Ops 3 mods, game development">
     <meta property="og:title" content="Crowdfunding Campaign for Z-Tavern 2.0" />
     <meta property="og:description" content="Help bring a better Z-Tavern experience to Black Ops 3! Support Kiels' full-year development with your contributions." />
     <meta property="og:image" content="https://yourwebsite.com/image-preview.png" />
@@ -156,6 +158,25 @@
             font-size: 14px;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
         }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 36px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
     </style>
     <script>
         let currentFunds = 20;
@@ -168,8 +189,12 @@
         }
 
         function donate(amount) {
-            currentFunds += amount;
-            updateProgress();
+            if (amount > 0 && currentFunds + amount <= goalFunds) {
+                currentFunds += amount;
+                updateProgress();
+            } else {
+                alert('Invalid donation amount or goal reached!');
+            }
         }
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -210,7 +235,9 @@
         <div class="stats">
             <p id="fundsText">€25 / €2000</p>
         </div>
-        <button onclick="window.open('https://paypal.me/Ztavern1', '_blank')">Donate with PayPal</button>
+        <button onclick="donate(5)">Donate €5</button>
+        <button onclick="donate(20)">Donate €20</button>
+        <button onclick="donate(50)">Donate €50</button>
         <p>If you're interested in freelance work, I'm available at <strong>€20/hour</strong>. Contact me through the community or Discord!</p>
     </section>
 
@@ -218,7 +245,7 @@
         <h3>Donation Rewards</h3>
         <ul>
             <li><strong>€5</strong>: Your name in the credits of the project.</li>
-            <li><strong>$25</strong>: Behind-the-scenes updates.</li>
+            <li><strong>€25</strong>: Behind-the-scenes updates.</li>
             <li><strong>€50</strong>: Early access to all features and content.</li>
             <li><strong>€100+</strong>: Personalized thank-you, priority support, and early access.</li>
         </ul>
