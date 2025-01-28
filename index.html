@@ -20,9 +20,9 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
-            50% { box-shadow: 0 0 20px rgba(212, 175, 55, 1); }
+        @keyframes progressGrow {
+            from { width: 10%; }
+            to { width: 15%; }
         }
 
         body {
@@ -126,12 +126,7 @@
             height: 30px;
             background: linear-gradient(45deg, #D4AF37, #8B7500);
             width: 10%;
-            animation: progressGrow 4s infinite alternate;
-        }
-
-        @keyframes progressGrow {
-            from { width: 10%; }
-            to { width: 20%; }
+            animation: progressGrow 6s infinite alternate;
         }
 
         .rewards {
