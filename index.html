@@ -18,6 +18,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
         body {
             font-family: 'Verdana', sans-serif;
             margin: 0;
@@ -34,6 +39,7 @@
             text-align: center;
             border-bottom: 3px solid #D4AF37;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            animation: slideIn 2s ease-out;
         }
 
         header h1 {
@@ -72,6 +78,7 @@
             margin: 20px;
             border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 2s ease-out;
         }
 
         section h2 {
@@ -80,28 +87,54 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .feature-card {
+            background-color: #202a34;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            color: #D4AF37;
+            text-align: left;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+        }
+
         .progress-bar {
-            width: 100%;
-            max-width: 600px;
-            height: 30px;
+            width: 80%;
+            margin: 20px auto;
             background-color: #10141b;
             border: 2px solid #D4AF37;
             border-radius: 8px;
             overflow: hidden;
-            margin: 20px auto;
+            position: relative;
         }
 
         .progress-bar span {
             display: block;
-            height: 100%;
+            height: 30px;
             background: linear-gradient(45deg, #D4AF37, #8B7500);
-            width: 0;
         }
 
-        .stats {
-            font-size: 18px;
-            margin-top: 10px;
+        .rewards {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #2e3b44;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
             color: #D4AF37;
+            font-size: 16px;
         }
 
         footer {
@@ -110,21 +143,41 @@
             padding: 20px;
             border-top: 3px solid #D4AF37;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 2s ease-out;
         }
 
         footer p {
             color: #D4AF37;
             font-size: 14px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 36px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            section {
+                padding: 20px;
+            }
         }
     </style>
     <script>
-        let currentFunds = 40; // Current contributions in euros
-        const hourlyRate = 20; // Hourly rate in euros
+        let currentFunds = 40;
+        const hourlyRate = 20; // €20 per hour
 
         function updateProgress() {
             const hoursFunded = (currentFunds / hourlyRate).toFixed(2);
-            const percentage = Math.min((currentFunds / hourlyRate) * 10, 100); // Capped at 100%
-            document.getElementById('fundsProgress').style.width = `${percentage}%`;
+            document.getElementById('fundsProgress').style.width = `${(currentFunds / hourlyRate) * 5}%`;
             document.getElementById('fundsText').textContent = `€${currentFunds} contributed (~${hoursFunded} hours funded)`;
         }
 
@@ -137,7 +190,9 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", updateProgress);
+        document.addEventListener("DOMContentLoaded", () => {
+            updateProgress();
+        });
     </script>
 </head>
 <body>
@@ -179,6 +234,20 @@
         <a href="https://paypal.me/ztavern1/100" target="_blank" class="cta-button">Donate €100</a>
         <p>If you're interested in freelance work, I'm available at <strong>€20/hour</strong>. Contact me through the community or Discord!</p>
     </section>
+
+    <section class="rewards">
+        <h3>Donation Rewards</h3>
+        <ul>
+            <li><strong>€5</strong>: Your name in the credits of the project.</li>
+            <li><strong>€25</strong>: Behind-the-scenes updates.</li>
+            <li><strong>€50</strong>: Early access to all features and content.</li>
+            <li><strong>€100+</strong>: Personalized thank-you, priority support, and early access.</li>
+        </ul>
+    </section>
+
+    <section id="discord">
+        <h2>Join the Community</h2>
+        <iframe src="https://discord.com/widget?id=1333613285756633139&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>    </section>
 
     <footer>
         <p>&copy; 2025 Crowdfunding Platform | All Rights Reserved</p>
