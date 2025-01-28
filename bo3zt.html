@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crowdfunding Campaign</title>
     <meta property="og:title" content="Crowdfunding Campaign for Z-Tavern 2.0" />
-    <meta property="og:description" content="Help bring a better Z-Tavern experience to Black Ops 3! Support Kiels' full-year development with your contributions." />
+    <meta property="og:description" content="Help bring a better Z-Tavern experience to Black Ops 3! Support Kiels' part-time development with your contributions." />
     <meta property="og:image" content="https://yourwebsite.com/image-preview.png" />
     <meta property="og:url" content="https://yourwebsite.com" />
     <meta property="og:type" content="website" />
@@ -164,11 +164,13 @@
     <script>
         let currentFunds = 20;
         const goalFunds = 2000;
+        const goalHours = 120;
 
         function updateProgress() {
             const fundsPercentage = (currentFunds / goalFunds) * 100;
             document.getElementById('fundsProgress').style.width = fundsPercentage + '%';
             document.getElementById('fundsText').textContent = `€${currentFunds} / €${goalFunds}`;
+            document.getElementById('hoursText').textContent = `${(currentFunds / goalFunds * goalHours).toFixed(1)} / ${goalHours} hours`;
         }
 
         function donate(amount) {
@@ -184,24 +186,24 @@
 <body>
     <header>
         <h1>Crowdfunding Campaign</h1>
-        <p>If we reach €2000, I will work on Z-Tavern 2.0 for a full year and give early access to all contributors!</p>
-        <a class="cta-button" href="#donate">Contribute Now</a>
+        <p>Do you want a better Z-Tavern with Kiels working part-time on it after work?</p>
+        <a class="cta-button" href="#donate">Donate Now</a>
     </header>
 
     <section>
         <h2>Why Support Z-Tavern 2.0?</h2>
         <div class="features">
             <div class="feature-card">
-                <h3>Full-Year Commitment</h3>
-                <p>With your support, I'll dedicate a full year to improving Z-Tavern 2.0.</p>
+                <h3>Improved Gameplay</h3>
+                <p>Experience enhanced mechanics and smoother performance.</p>
             </div>
             <div class="feature-card">
-                <h3>Exclusive Early Access</h3>
-                <p>Contributors will enjoy exclusive early access to all new features.</p>
+                <h3>New Features</h3>
+                <p>Enjoy exclusive content, custom maps, and more engaging challenges.</p>
             </div>
             <div class="feature-card">
-                <h3>Improved Experience</h3>
-                <p>Enhanced gameplay, custom maps, and community-driven updates.</p>
+                <h3>Community Updates</h3>
+                <p>Benefit from community-driven development and regular updates.</p>
             </div>
         </div>
     </section>
@@ -213,8 +215,23 @@
         </div>
         <div class="stats">
             <p id="fundsText">€20 / €2000</p>
+            <p id="hoursText">1.2 / 120 hours</p>
         </div>
         <button onclick="window.open('https://paypal.me/Ztavern1', '_blank')">Donate with PayPal</button>
     </section>
 
     <section class="rewards">
+        <h3>Donation Rewards</h3>
+        <ul>
+            <li><strong>€5</strong>: Your name in the credits of the project.</li>
+            <li><strong>€20</strong>: Exclusive access to behind-the-scenes updates.</li>
+            <li><strong>€50</strong>: Early access to new features and content, including exclusive beta builds.</li>
+            <li><strong>€100+</strong>: Personalized thank-you message, priority support, and early access to premium server content.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Crowdfunding Platform | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
