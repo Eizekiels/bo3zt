@@ -15,11 +15,6 @@
             to { width: 1%; }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-        }
-
         body {
             font-family: 'Verdana', sans-serif;
             margin: 0;
@@ -35,7 +30,6 @@
             text-align: center;
             border-bottom: 3px solid #D4AF37;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-            animation: pulse 2s infinite;
         }
 
         header h1 {
@@ -97,7 +91,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-            animation: pulse 2s infinite;
+            animation: fadeIn 1.3s ease-out;
         }
 
         button:hover {
@@ -151,7 +145,7 @@
 
     <section>
         <h2>Support the Development of Z-Tavern 2.0</h2>
-        <p>Your contribution will help bring an even better Z-Tavern experienceA to Black Ops 3, making it twice as exciting with improved gameplay, features, and community-focused updates. Together, we can create something incredible!</p>
+        <p>Your contribution will help bring an even better Z-Tavern experience to Black Ops 3, making it twice as exciting with improved gameplay, features, and community-focused updates. Together, we can create something incredible!</p>
         <p>We commit to delivering 120 hours of dedicated work to develop the server, with a full 1-year guarantee of support and updates to ensure your gaming experience is top-notch.</p>
         <div class="progress-bar">
             <span id="fundsProgress"></span>
