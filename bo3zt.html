@@ -10,14 +10,14 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes progressGrow {
-            from { width: 0; }
-            to { width: 1%; }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(212, 175, 55, 1); }
         }
 
         body {
@@ -35,7 +35,7 @@
             text-align: center;
             border-bottom: 3px solid #D4AF37;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-            animation: pulse 2s infinite;
+            animation: slideIn 1s ease-out;
         }
 
         header h1 {
@@ -43,6 +43,7 @@
             margin: 0;
             font-size: 42px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            animation: pulseGlow 2s infinite;
         }
 
         section {
@@ -69,15 +70,19 @@
             border-radius: 8px;
             overflow: hidden;
             position: relative;
-            animation: fadeIn 2s ease-out;
         }
 
         .progress-bar span {
             display: block;
             height: 30px;
             background-color: #D4AF37;
-            width: 1%;
-            animation: progressGrow 2s ease-out;
+            width: 10%; /* Updated for visual starting point */
+            animation: progressGlow 1.5s infinite alternate;
+        }
+
+        @keyframes progressGlow {
+            from { width: 10%; }
+            to { width: 20%; }
         }
 
         .stats {
@@ -97,7 +102,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-            animation: pulse 2s infinite;
+            animation: pulseGlow 2s infinite;
         }
 
         button:hover {
@@ -112,7 +117,6 @@
             padding: 20px;
             border-top: 3px solid #D4AF37;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.8);
-            animation: fadeIn 1.5s ease-out;
         }
 
         footer p {
